@@ -1,0 +1,15 @@
+<ng-template [ngIf]="selectedPost">
+    <div >
+        <form [formGroup]="updateForm">
+            <textarea
+                [froalaEditor]
+                formControlName="description"
+                [(froalaModel)]="updateForm.value.description"
+            >
+            </textarea>
+            <!-- <div [froalaView]="updateForm.value.description"></div> -->
+            <button mat-raised-button color="primary" (click)="updatePost()"> Save </button>
+        </form>
+    </div>
+</ng-template>
+

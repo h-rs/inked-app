@@ -1,0 +1,34 @@
+<div>
+  <app-global-header></app-global-header>
+</div>
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav class="mat-elevation-z8">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    #drawer
+    class="example-sidenav blah"
+    mode="side"
+    [disableClose]="'false'"
+  >
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <!-- <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button> -->
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

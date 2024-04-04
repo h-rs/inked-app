@@ -1,0 +1,50 @@
+<div class="container">
+  <mat-card>
+    <h2 class="container__header">Login</h2>
+    <form [formGroup]="loginForm" class="container__form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-error
+          *ngIf="
+            loginForm.get('email')!.hasError('email') &&
+            !loginForm.get('email')!.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')!.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+
+        <mat-error *ngIf="loginForm.get('password')!.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <ng-template [ngIf]="invalidLogin | async">
+        <div class="container__error">Invalid credentials</div>
+      </ng-template>
+
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!loginForm.valid"
+        (click)="login()"
+      >
+        Login
+      </button>
+      <div class="container__sign-up">
+        New user? <a href="sign-up">Sign Up </a>
+      </div>
+    </form>
+  </mat-card>
+</div>

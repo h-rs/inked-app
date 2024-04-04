@@ -1,0 +1,80 @@
+<div [formGroup]="entryForm" class="editor">
+  <div class="editor__title">
+    <mat-form-field class="example-form-field">
+      <mat-label>Add a title</mat-label>
+      <input matInput type="text" formControlName="title" maxlength="30" />
+    </mat-form-field>
+  </div>
+
+  <textarea
+    #froalaEditor
+    [froalaEditor]="options"
+    formControlName="description"
+    [(froalaModel)]="entryForm.value.descritpion"
+  ></textarea>
+
+  <mat-accordion class="entry-attr">
+    <mat-expansion-panel hideToggle class="entry-attr__mood">
+      <mat-expansion-panel-header>
+        <mat-panel-title> How are you feeling? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let mood of availableMoods">
+        <button
+          mat-mini-fab
+          class="entry-attr__mood-button"
+          [color]="mood.color"
+          [value]="mood.id"
+          (click)="updateMood(mood.id, !mood.selected)"
+        >
+          <mat-icon>{{ mood.icon }}</mat-icon>
+        </button>
+      </ng-container>
+    </mat-expansion-panel>
+    <mat-expansion-panel hideToggle class="entry-attr__tag">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Tags </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-form-field class="entry-attr__tag-chips">
+        <!-- <mat-label>Add Tags</mat-label> -->
+        <mat-chip-list #chipList aria-label="Tags">
+          <mat-chip
+            *ngFor="let tag of entryForm.value?.tags"
+            removable="true"
+            (removed)="removeTag(tag)"
+          >
+            {{ tag }}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Add Tags"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputFor]="chipList"
+            matChipInputAddOnBlur="true"
+            (matChipInputTokenEnd)="addTag($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="footer">
+  <button
+    *ngIf="selectedEntry._id"
+    mat-raised-button
+    color="warn"
+    (click)="trashEntry()"
+  >
+    Trash
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!entryForm.valid || !entryForm.dirty"
+    (click)="saveEntry()"
+  >
+    Save
+  </button>
+</div>

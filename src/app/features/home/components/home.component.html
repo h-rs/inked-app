@@ -1,0 +1,61 @@
+<mat-card class="card">
+  <mat-card-title class="card__title">
+    <p>Welcome back, {{ user.firstName }}!</p>
+    <button color="accent" mat-icon-button>
+      <mat-icon>waving_hand</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-subtitle class="card__subtitle">
+    <p><i> We are so psyched to have you here! </i> 🤩🎉</p>
+    <button color="accent" mat-icon-button></button>
+  </mat-card-subtitle>
+
+  <mat-card-content class="card__content">
+    <div class="card__content--para">
+      <p>
+        Your last entry was on {{ lastPostedDate | date : "fullDate" }}.
+        <ng-template [ngIf]="gap > 5">
+          It's been {{ gap }} days already!
+        </ng-template>
+
+        Why don't you add a new entry today? Click
+
+        <a href="/entries/create-entry">
+          <b> <i>here </i></b></a
+        >
+        to get started!
+      </p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-divider></mat-divider>
+<div>
+  <div class="recents">
+    <mat-icon [inline]="true"> update</mat-icon>
+    Recently Updated
+  </div>
+  <div class="section">
+    <div
+      class="card"
+      *ngFor="let entry of entries"
+      (click)="viewEntry(entry._id)"
+    >
+      <a [href]="'entries/update-entry/' + entry._id">
+        <h3>
+          <i>{{ entry.title }} </i>
+        </h3>
+      </a>
+      <div class="card__content">
+        <p [innerHtml]="entry.description.slice(0, 100) + '...'"></p>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="card__footer">
+        <p>
+          <mat-icon [inline]="true"> update </mat-icon>
+          {{ entry.lastUpdated | date : "medium" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

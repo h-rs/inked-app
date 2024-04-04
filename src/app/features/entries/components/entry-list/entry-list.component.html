@@ -1,0 +1,54 @@
+<div class="header">
+  <div class="header__title">
+    <h2>Entries</h2>
+  </div>
+  <div class="header__action">
+    <div class="header__action--search">
+      <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="term" type="text" (keyup)="onSearch()" />
+      </mat-form-field>
+    </div>
+    <div class="header__action--create">
+      <button
+        mat-button
+        aria-label="New Entry"
+        #tooltip="matTooltip"
+        matTooltip="New entry"
+        matTooltipHideDelay="100"
+        routerLink="create-entry"
+      >
+        <mat-icon class="theme-color">add_circle</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div
+    class="card"
+    *ngFor="let entry of entries"
+    (click)="viewEntry(entry._id)"
+  >
+    <!-- <div> -->
+    <a [href]="'entries/update-entry/' + entry._id">
+      <h2>{{ entry.title }}</h2>
+    </a>
+    <!-- </div> -->
+    <div class="card__content">
+      <p [innerHtml]="entry.description.slice(0, 100) + '...'"></p>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="card__footer">
+      <p>
+        <mat-icon [inline]="true"> schedule </mat-icon>
+        {{ entry.postedDate | date : "medium" }}
+      </p>
+    </div>
+  </div>
+</div>
+<ng-template #progressSpinner>
+  <div class="progress-spinner" *ngIf="isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

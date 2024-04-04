@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Crimson Text', serif;}
+
+
+
+div .progress-spinner {
+    width: 250px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+// body {
+//     font-family: 'Crimson Text' /* Replace with your custom font */, sans-serif !important; 
+//     /* Add !important to overwrite all elements */
+//   }
+
+// html, body {
+//     font-family: 'Crimson Text', serif !important;
+// }
+
+.theme-color {
+    color: #c94c4c;
+}
+
+
+a {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: black;
+    }
+
+    &:hover,
+    &:focus {
+      color: #c94c4c;
+    }
+}
+
+// .mat-body, .mat-body-1, .mat-typography .mat-button   { 
+//   font-family: 'Crimson Text' !important;
+// }

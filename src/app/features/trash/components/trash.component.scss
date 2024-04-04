@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.1rem;
+  padding: 1rem 1rem 0.1rem;
+  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  //font-family: 'Crimson Text', serif !important;
+  &:hover {
+    transform: scale(1.02);
+  }
+  &__content {
+    width: 70%;
+
+    &--date {
+      margin-top: 0.5rem;
+      mat-icon {
+        vertical-align: middle;
+        font-size: 21px;
+      }
+    }
+
+  }
+  &__action {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+
+// @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+// // html, body { height: 100%; }
+// // body { margin: 0; font-family: 'Crimson Text', serif;}

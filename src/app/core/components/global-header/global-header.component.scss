@@ -1,0 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:link , &:visited{
+      color: black;
+    }
+
+    &:hover, &:focus {
+      color: #13c4a5;
+    }
+  }
+
+  .logo {
+    display: flex;
+    mat-icon {
+      font-size: xx-large;
+      margin-left: 0.5rem;
+    }
+    h1 {
+      font-size: xx-large;
+      margin-left: 0.5rem;
+      font-family: fantasy;
+      margin-top: 0.3rem;
+    }
+  }

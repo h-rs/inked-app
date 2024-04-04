@@ -1,0 +1,70 @@
+<mat-card *ngIf="(isLoading | async) === false; else progressSpinner">
+  <div class="header">
+    <h2>User Profile</h2>
+
+    <button
+      *ngIf="userForm.disabled"
+      mat-mini-fab
+      color="primary"
+      aria-label="Example icon button with a menu icon"
+      (click)="editForm()"
+    >
+      <mat-icon>drive_file_rename_outline</mat-icon>
+    </button>
+  </div>
+  <mat-card-subtitle class="card__subtitle">
+    <div class="info-button-group">
+      <div>
+        <button mat-icon-button color="warn">
+          <mat-icon>loyalty</mat-icon>
+        </button>
+        Member since: {{ userForm.value?.createdDate | date : "fullDate" }}
+      </div>
+      <div>
+        <button mat-icon-button color="warn">
+          <mat-icon>history</mat-icon>
+        </button>
+        Last Login: {{ userForm.value?.lastLoggedIn | date : "medium" }}
+      </div>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <!-- <mat-divider></mat-divider> -->
+
+    <form [formGroup]="userForm" class="form">
+      <mat-form-field class="form__field">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" maxlength="10" />
+      </mat-form-field>
+      <mat-form-field class="form__field">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" maxlength="10" />
+      </mat-form-field>
+      <mat-form-field class="form__field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+      <!-- <mat-form-field class="form__field">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field> -->
+    </form>
+    <div *ngIf="userForm.enabled" class="footer">
+      <button mat-raised-button (click)="cancelProfileUpdate()">Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="userForm.untouched && userForm.pristine"
+        (click)="updateProfile()"
+      >
+        Update
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #progressSpinner>
+  <div class="progress-spinner" *ngIf="isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

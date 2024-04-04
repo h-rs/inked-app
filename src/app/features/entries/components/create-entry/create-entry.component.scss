@@ -1,0 +1,31 @@
+.editor {
+    margin-bottom: 1rem;
+    &__title {
+        .mat-form-field {
+            width: 100%;
+        }
+       
+    }
+}
+
+.entry-attr {
+    &__mood {
+        margin-top: 1rem;
+        &-button {
+            margin: 0.1rem;
+        }
+    }
+    &__tag {
+        margin-top: 1rem;
+        &-chips {
+            width: 100%;
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    gap: 10px
+}

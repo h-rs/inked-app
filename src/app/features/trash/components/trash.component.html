@@ -1,0 +1,34 @@
+<h2>Trash</h2>
+<div *ngIf="(isLoading | async) === false; else progressSpinner">
+  <div class="card" *ngFor="let entry of trashedEntries">
+    <div class="card__content">
+      <div>
+        <b>{{ entry.title }}</b>
+      </div>
+      <div [innerHtml]="entry.description.slice(0, 50) + '...'"></div>
+
+      <p class="card__content--date">
+        <mat-icon>auto_delete</mat-icon>
+        {{ getTrashedDate(entry.trashedDate!) | date : "mediumDate" }}
+      </p>
+    </div>
+    <div class="card__action">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="preview(entry)">Preview</button>
+        <button mat-menu-item (click)="restore(entry)">Restore</button>
+        <button mat-menu-item (click)="openDialog(entry)">
+          Delete Forever
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+
+<ng-template #progressSpinner>
+  <div class="progress-spinner" *ngIf="isLoading | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

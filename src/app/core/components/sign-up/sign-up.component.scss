@@ -1,0 +1,26 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-image: url("https://cdn.pixabay.com/photo/2018/02/02/22/49/background-3126537_960_720.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+
+    mat-card {
+        width: 30%;
+        border-radius: 10px;
+    }
+
+    &__header {
+        text-align: center;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__sign-up {
+        text-align: center;
+        margin-top: 1rem;
+    }
+}

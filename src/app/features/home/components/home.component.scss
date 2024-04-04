@@ -1,0 +1,100 @@
+.card {
+  box-shadow: none;
+  background: none;
+  //font-family: 'Crimson Text';
+  &__title {
+    display: flex;
+    p {
+      margin-top: 0.8rem;
+    }
+    button {
+      pointer-events: none;
+    }
+  }
+  &__subtitle {
+    display: flex;
+    p {
+      margin-top: 1rem;
+    }
+    button {
+      pointer-events: none;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+    &--para {
+      a {
+        text-decoration: none;
+
+        &:link,
+        &:visited {
+          color: red;
+        }
+
+        &:hover,
+        &:focus {
+          color: #13c4a5;
+        }
+      }
+    }
+  }
+}
+
+.recents {
+  display: flex;
+  margin: 1rem;
+  gap: 0.3rem;
+  font-size: 20px;
+  margin-top: 2rem;
+}
+.section {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 15rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding-bottom: 0.1rem;
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      //color: #c94c4c;
+    }
+    // a {
+    //   text-decoration: none;
+
+    //   &:link,
+    //   &:visited {
+    //     color: black;
+    //   }
+
+    //   &:hover,
+    //   &:focus {
+    //     color: #13c4a5;
+    //   }
+    // }
+    &__content {
+      min-height: 6rem;
+      max-height: 6rem;
+    }
+    &__footer {
+      padding-top: 0.5rem;
+
+      mat-icon {
+        vertical-align: middle;
+      }
+    }
+  }
+}
